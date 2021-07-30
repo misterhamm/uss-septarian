@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'Edge of the Galaxy';
-    src: url('/Edge-of-the-Galaxy.eot');
-    src: url('/Edge-of-the-Galaxy.eot?#iefix') format('embedded-opentype'),
-        url('/Edge-of-the-Galaxy.woff2') format('woff2'),
-        url('/Edge-of-the-Galaxy.woff') format('woff'),
-        url('/Edge-of-the-Galaxy.ttf') format('truetype');
+    src: url('<%= BASE_URL %>/Edge-of-the-Galaxy.eot');
+    src: url('<%= BASE_URL %>/Edge-of-the-Galaxy.eot?#iefix') format('embedded-opentype'),
+        url('<%= BASE_URL %>/Edge-of-the-Galaxy.woff2') format('woff2'),
+        url('<%= BASE_URL %>/Edge-of-the-Galaxy.woff') format('woff'),
+        url('<%= BASE_URL %>/Edge-of-the-Galaxy.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
