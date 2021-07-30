@@ -1,0 +1,49 @@
+
+
+.hero {
+    align-items: center;
+    display: flex;
+    height: 300px;
+    text-align: center;
+
+    h1 {
+        background: rgb(84, 232, 234);
+        background: linear-gradient(0deg, rgba(84, 232, 234, 1) 0%, rgba(84, 232, 234, 1) 25%, rgba(21, 151, 225, 1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        font-size: 60px;
+        font-family: 'Edge of the Galaxy';
+        position: relative;
+        z-index: 2;
+
+
+        @media (min-width: 970px) {
+            font-size: 120px;
+
+        }
+    }
+}
+
+#title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+
+    color: #FFF;
+    text-align: center;
+    font-family: 'lato', sans-serif;
+    font-weight: 300;
+    font-size: 50px;
+    letter-spacing: 10px;
+
+    margin-top: -60px;
+    padding-left: 10px;
+
+    span {
+        background: -webkit-linear-gradient(white, #38495a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
