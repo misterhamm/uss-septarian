@@ -44,6 +44,10 @@
       <div class="hero">
         <v-container>
             <h1>{{ hero.title.value }}</h1>
+            <h2 style="position: relative;">
+          test!!!
+          <a href="https://www.twitter.com/intent/tweet?url=https://www.bizstream.com&text=My%20Title+%7C+Bridgespan">social link test</a>
+        </h2>
         </v-container>
       </div>
     </div>

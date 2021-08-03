@@ -1,78 +1,80 @@
 <template>
-      <div>
-      <Nav/>
+  <div>
+    <Nav />
     <div class="hero">
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
-        <v-container>
-            <h1>{{ heroItem.title.value }}</h1>
-        </v-container>
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+      <v-container>
+        <h1>{{ heroItem.title.value }}</h1>
+        <h2>
+          test!!!
+          <a href="https://www.twitter.com/intent/tweet?url=https://www.bizstream.com&text=My%20Title+%7C+Bridgespan">social link test</a>
+        </h2>
+      </v-container>
     </div>
-    </div>
+  </div>
 </template>
 
-
 <script>
-    import Nav from './Nav'
+import Nav from "./Nav";
 
 export default {
-    name: 'Hero',
-    components: {
-    Nav
+  name: "Hero",
+  components: {
+    Nav,
   },
-  data: () => ({
-  }),
-  props: [
-    'heroItem'
-  ],
-  mounted() {
-  }
-}
+  data: () => ({}),
+  props: ["heroItem"],
+  mounted() {},
+};
 </script>
 <style lang="scss" scoped>
-    .hero {
-        align-items: center;
-        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-        display: flex;
-        height: 500px;
-        text-align: center;
+.hero {
+  align-items: center;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  display: flex;
+  height: 500px;
+  text-align: center;
 
-        h1 {
-            background: rgb(84,232,234);
-            background: linear-gradient(0deg, rgba(84,232,234,1) 0%,rgba(84,232,234,1) 25%, rgba(21,151,225,1) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            font-size: 60px;
-            font-family: 'Edge of the Galaxy';
-            position: relative;
-            z-index: 2;
+  h1 {
+    background: rgb(84, 232, 234);
+    background: linear-gradient(
+      0deg,
+      rgba(84, 232, 234, 1) 0%,
+      rgba(84, 232, 234, 1) 25%,
+      rgba(21, 151, 225, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-size: 60px;
+    font-family: "Edge of the Galaxy";
+    position: relative;
+    z-index: 2;
 
-
-            @media (min-width: 970px) {
-            font-size: 120px;
-
-            }
-        }
+    @media (min-width: 970px) {
+      font-size: 120px;
     }
-
-    // n is number of stars required
-@function multiple-box-shadow ($n) {
-  $value: '#{random(2000)}px #{random(2000)}px #FFF';
-  @for $i from 2 through $n {
-    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF'
   }
-  @return unquote($value)
 }
 
-$shadows-small:  multiple-box-shadow(700);
+// n is number of stars required
+@function multiple-box-shadow($n) {
+  $value: "#{random(2000)}px #{random(2000)}px #FFF";
+  @for $i from 2 through $n {
+    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
+  }
+  @return unquote($value);
+}
+
+$shadows-small: multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
-$shadows-big:    multiple-box-shadow(100);
+$shadows-big: multiple-box-shadow(100);
 
 html {
   height: 100%;
-  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
 }
 #stars {
@@ -81,7 +83,7 @@ html {
   background: transparent;
   box-shadow: $shadows-small;
   animation: animStar 50s linear infinite;
-    
+
   &:after {
     content: " ";
     position: absolute;
@@ -90,14 +92,15 @@ html {
     height: 1px;
     background: transparent;
     box-shadow: $shadows-small;
-}   }
+  }
+}
 #stars2 {
   width: 2px;
   height: 2px;
   background: transparent;
   box-shadow: $shadows-medium;
   animation: animStar 100s linear infinite;
-    
+
   &:after {
     content: " ";
     position: absolute;
@@ -106,14 +109,15 @@ html {
     height: 2px;
     background: transparent;
     box-shadow: $shadows-medium;
-}}
+  }
+}
 #stars3 {
   width: 3px;
   height: 3px;
   background: transparent;
   box-shadow: $shadows-big;
   animation: animStar 150s linear infinite;
-    
+
   &:after {
     content: " ";
     position: absolute;
@@ -122,23 +126,24 @@ html {
     height: 3px;
     background: transparent;
     box-shadow: $shadows-big;
-}}
+  }
+}
 #title {
   position: absolute;
   top: 50%;
   left: 0;
   right: 0;
-  
-  color: #FFF;
+
+  color: #fff;
   text-align: center;
-  font-family: 'lato',sans-serif;
+  font-family: "lato", sans-serif;
   font-weight: 300;
   font-size: 50px;
   letter-spacing: 10px;
-  
+
   margin-top: -60px;
   padding-left: 10px;
-  
+
   span {
     background: -webkit-linear-gradient(white, #38495a);
     -webkit-background-clip: text;
@@ -146,10 +151,11 @@ html {
   }
 }
 @keyframes animStar {
-  from	{
-    transform: translateY(0px)}
-  to {	
-    transform: translateY(-2000px)
-}}
-
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
 </style>
