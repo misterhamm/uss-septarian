@@ -11,15 +11,15 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Install and Build 🔧 # This project is built using npm and outputs the result to the 'dist' folder.
         run: |
           npm install
           npm run build
 
-      - name: Upload Artifacts 🔺 # The project is then uploaded as an artifact named 'site'.
-        uses: actions/upload-artifact@v1
+      - name: Upload Artifacts 💾 # The project is then uploaded as an artifact named 'site-artifact'.
+        uses: actions/upload-artifact@v2
         with:
-          name: site
+          name: site-artifact
           path: dist
 
   deploy:
@@ -29,13 +29,13 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Download Artifacts 🔻 # The built project is downloaded into the 'site' folder.
-        uses: actions/download-artifact@v1
+      - name: Download Artifacts 💾 # The built project is downloaded into the 'site-artifact' folder.
+        uses: actions/download-artifact@v2
         with:
-          name: site
+          name: site-artifact
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
-          folder: "site" # The deployment folder should match the name of the artifact. Even though our project builds into the 'build' folder the artifact name of 'site' must be placed here.
+          folder: "site-artifact" # The deployment folder should match the name of the artifact. Even though our project builds into the 'dist' folder the artifact name of 'site-artifact' must be placed here.
