@@ -19,10 +19,10 @@ jobs:
           npm run build
 
       - name: Upload Artifacts 💾 # The project is then uploaded as an artifact named 'site'.
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
           name: site
-          path: "/dist"
+          path: dist
 
   deploy:
     needs: [build] # The second job must depend on the first one to complete before running, and uses ubuntu-latest instead of windows.
@@ -34,7 +34,7 @@ jobs:
           persist-credentials: false
 
       - name: Download Artifacts 💾 # The built project is downloaded into the 'site' folder.
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v1
         with:
           name: site
 
