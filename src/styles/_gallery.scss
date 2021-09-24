@@ -1,0 +1,16 @@
+.gallery {
+    column-count: 2;
+    column-gap: 20px;
+
+    @media (min-width: 768px) {
+        column-count: 4;
+    }
+    img {
+        margin-bottom: 20px;
+    }
+
+}
+.v-dialog, .v-dialog .v-card {
+    max-width: 680px;
+    margin: 0 auto;
+}
