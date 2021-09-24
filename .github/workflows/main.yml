@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
 
       - name: Install and Build 🔨 # This project is built using npm and outputs the result to the 'dist' folder.
         run: |
@@ -28,6 +30,8 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
 
       - name: Download Artifacts 💾 # The built project is downloaded into the 'site' folder.
         uses: actions/download-artifact@v2
@@ -37,5 +41,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
+          token: ${{ secrets.ACCESS_TOKEN }}
           branch: gh-pages
           folder: "site" # The deployment folder should match the name of the artifact. Even though our project builds into the 'dist' folder the artifact name of 'site' must be placed here.
