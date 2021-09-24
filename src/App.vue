@@ -21,14 +21,14 @@
                 <v-list-item-icon>
                   <i class="fas fa-rocket"></i>
                 </v-list-item-icon>
-                <v-list-item-title><a href="#about">Who we are</a></v-list-item-title>
+                <v-list-item-title><a href="#about" v-smooth-scroll>Who we are</a></v-list-item-title>
               </v-list-item>
               <v-list-item>
                 <v-list-item-icon>
                   <i class="fas fa-user-astronaut"></i>
                 </v-list-item-icon>
                 <v-list-item-title>
-                  <a href="#crew">
+                  <a href="#crew"  v-smooth-scroll>
                     Crew
                   </a>
                 </v-list-item-title>
@@ -38,7 +38,7 @@
                   <i class="fas fa-calendar-alt"></i>
                 </v-list-item-icon>
                 <v-list-item-title>
-                  <a href="#events">
+                  <a href="#events" v-smooth-scroll>
                     Events
                   </a>
                 </v-list-item-title>
@@ -48,7 +48,7 @@
                   <i class="fas fa-camera"></i>
                 </v-list-item-icon>
                 <v-list-item-title>
-                  <a href="#gallery">
+                  <a href="#gallery" v-smooth-scroll>
                     Gallery
                   </a>
                 </v-list-item-title>
@@ -58,7 +58,7 @@
                   <i class="fas fa-hand-spock"></i>
                 </v-list-item-icon>
                 <v-list-item-title>
-                  <a href="#events">
+                  <a href="#ship" v-smooth-scroll>
                     About the Septarian
                   </a>
                 </v-list-item-title>
@@ -117,7 +117,8 @@
         </ul>
       </v-container>
 
-      <v-container>
+      <!-- Gallery -->
+      <v-container id="gallery">
         <h2>Image Gallery</h2>
         <div class="gallery">
           <v-dialog v-for="(image, index) in gallery" :key="index">
@@ -134,6 +135,12 @@
               </template>
           </v-dialog>
         </div>
+      </v-container>
+
+      <!-- Ship Info -->
+      <v-container id="ship">
+        <h2>More About The Septarian</h2>
+        <div v-html="ship"></div>
       </v-container>
     </v-main>
     <!-- star background -->
@@ -161,7 +168,8 @@ export default {
     galleryImages: [],
     gallery: [],
     drawer: false,
-    showNav: true
+    showNav: true,
+    ship: ''
   }),
   mounted() {
     this.getEvents();
@@ -169,6 +177,7 @@ export default {
     this.getAbout();
     this.getCrew();
     this.getGallery();
+    this.getShip();
   },
   methods: {
     toggleNav() {
@@ -203,7 +212,7 @@ export default {
         this.hero = this.getContentItems(response.items[0]);
       });
     },
-        getAbout() {
+    getAbout() {
       const KontentDelivery = require('@kentico/kontent-delivery');
       const deliveryClient = new KontentDelivery.DeliveryClient({
         projectId: '1f1f4265-7223-0092-ffae-6eb20679c9cb'
@@ -214,6 +223,20 @@ export default {
       .toPromise()
       .then(response => {
         this.about = this.getContentItems(response.items[0].description.value);
+      });
+    },
+    getShip() {
+      const KontentDelivery = require('@kentico/kontent-delivery');
+      const deliveryClient = new KontentDelivery.DeliveryClient({
+        projectId: '1f1f4265-7223-0092-ffae-6eb20679c9cb'
+      });
+      deliveryClient
+      .itemsFeedAll()
+      .type('ship')
+      .toPromise()
+      .then(response => {
+        console.log(response.items[0].description.value)
+        this.ship = this.getContentItems(response.items[0].description.value);
       });
     },
     getCrew() {

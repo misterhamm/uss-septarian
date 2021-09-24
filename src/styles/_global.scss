@@ -140,3 +140,9 @@ $shadows-big: multiple-box-shadow(100);
         transform: translateY(0px)
     }
 }
+
+@media (min-width: 1264px) {
+    .container {
+        max-width: 1440px;
+    }
+}
